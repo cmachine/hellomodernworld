@@ -2,10 +2,13 @@
   "name": "hellomodernworld",
   "version": "1.0.0",
   "description": "simple web app using modern frameworks and CI/CD tools",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "csocha",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
 }
