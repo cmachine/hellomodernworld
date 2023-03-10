@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install modules
-        run: npm i jest-github-action
+        run: npm install
       - name: Run Jest
-        run: npm run jest
+        run: npm run test
