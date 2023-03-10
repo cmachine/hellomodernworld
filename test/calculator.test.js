@@ -1,4 +1,4 @@
-const mathOperations = require("../src/app");
+const mathOperations = require("../src/services/calcService");
 
 describe("Calculator Tests", () => {
   test("Addition of 2 numbers", () => {
