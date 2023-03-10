@@ -1,0 +1,11 @@
+{
+  "name": "hellomodernworld",
+  "version": "1.0.0",
+  "description": "simple web app using modern frameworks and CI/CD tools",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "csocha",
+  "license": "ISC"
+}
