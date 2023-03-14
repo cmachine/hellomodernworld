@@ -4,12 +4,12 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.16"
     }
-    cloud {
-      organization = "csocha"
+  }
+  cloud {
+    organization = "csocha"
 
-      workspaces {
-        name = "hellomodernworld"
-      }
+    workspaces {
+      name = "hellomodernworld"
     }
   }
 
