@@ -4,6 +4,13 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.16"
     }
+    cloud {
+      organization = "csocha"
+
+      workspaces {
+        name = "hellomodernworld"
+      }
+    }
   }
 
   required_version = ">= 1.2.0"
@@ -21,11 +28,4 @@ resource "aws_instance" "app_server" {
     Name = "ExampleAppServerInstance"
   }
 
-}
-cloud {
-  organization = "csocha"
-
-  workspaces {
-    name = "hellomodernworld"
-  }
 }
