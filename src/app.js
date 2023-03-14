@@ -12,21 +12,3 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-const mathOperations = {
-  sum: function (a, b) {
-    return a + b;
-  },
-
-  diff: function (a, b) {
-    return a - b;
-  },
-  product: function (a, b) {
-    return a * b;
-  },
-  divide: function (a, b) {
-    return a / b;
-  },
-};
-
-module.exports = mathOperations;
