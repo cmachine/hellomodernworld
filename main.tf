@@ -1,31 +1,38 @@
 terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
-    }
-  }
-  cloud {
-    organization = "csocha"
-
-    workspaces {
-      name = "hellomodernworld"
-    }
-  }
-
-  required_version = ">= 1.2.0"
+  required_version = "~>1.3.7"
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = var.region
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
+module "vpc" {
+  source             = "./infra/vpc"
+  name               = var.name
+  environment        = var.environment
+  cidr               = var.cidr
+  private_subnets    = var.private_subnets
+  public_subnets     = var.public_subnets
+  availability_zones = var.availability_zones
+}
 
-  tags = {
-    Name = "ExampleAppServerInstance"
-  }
+module "eks" {
+  source          = "./infra/eks"
+  name            = var.name
+  environment     = var.environment
+  region          = var.region
+  k8s_version     = var.k8s_version
+  vpc_id          = module.vpc.id
+  private_subnets = module.vpc.private_subnets
+  public_subnets  = module.vpc.public_subnets
+  kubeconfig_path = var.kubeconfig_path
+}
 
+module "ingress" {
+  source      = "./infra/ingress"
+  name        = var.name
+  environment = var.environment
+  region      = var.region
+  vpc_id      = module.vpc.id
+  cluster_id  = module.eks.cluster_id
 }
